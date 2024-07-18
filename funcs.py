@@ -6,15 +6,12 @@ MORSE_DICT = {
     'Y': '-.--', 'Z': '--..'
     }
 
-def UserInput():
+def UserInputProcesser(userInput):
     # Gets user input and processes it
 
-    userInput = input(
-        "Type the morse code you wish to translate (Dots . and dashes -)(Formating: Seperate letters with / and words with #):"
-                      )
-    
+    cleanUserInput = userInput.replace("\n", "")
     # Replacing "#" with "/ /" for easier splitting
-    respacedUserInput = userInput.replace("#", "/ /")
+    respacedUserInput = cleanUserInput.replace("#", "/ /")
     # Spliting the string to individual letters and spaces
     processedUserInput = respacedUserInput.split("/")
 
@@ -22,7 +19,7 @@ def UserInput():
     return processedUserInput
 
 
-def DecipherMorse(morseCode):
+def DecipherText(morseCode):
     # Converts the morse into a string
 
     decipheredLetterList = []
@@ -39,7 +36,11 @@ def DecipherMorse(morseCode):
         else:
 
             # Checks the MORSE_DICT for the translation of a morse string and appends it to the decipheredLetterList
-            decipheredLetter = list(MORSE_DICT.keys())[list(MORSE_DICT.values()).index(entry)]
+            try:
+                decipheredLetter = list(MORSE_DICT.keys())[list(MORSE_DICT.values()).index(entry)]
+            except:
+                print("The entered text isnt valid")
+                break
             decipheredLetterList.append(decipheredLetter)
 
     #Joins the list into a single string (decipheredString)
