@@ -27,6 +27,69 @@ def UserInputProcesser(userInput):
     return splitUserInput
 
 
+def RetriveTranslation(input, translationProtocol):
+    # retrives the translation of the input and returns it
+
+    output = ""
+
+    if translationProtocol == "morseToEnglish":
+
+        try:
+            output = list(MORSE_DICT.keys())[list(MORSE_DICT.values()).index(input)]
+        except:
+            return "#"
+        
+    elif translationProtocol == "englishToMorse":
+
+        try:
+            output = MORSE_DICT.get(input)
+        except:
+            return "#"
+
+    else:
+
+        raise ValueError("Invalid Translation Protocol")
+    
+    return output
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def DecipherText(morseCode):
     # Converts the morse into a string
 
