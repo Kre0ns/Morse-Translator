@@ -3,7 +3,7 @@ import tkinter
 import customtkinter
 
 # importing funcs
-from funcs import (UserInputProcesser, TranslateText, ChangeTranslationProtocol)
+from functions import (UserInputProcesser, TranslateText, ChangeTranslationProtocol)
 
 def TranslateButtonPressed():
     # on button press, takes the user input from the inputTextbox and deciphers it outputing it to the outputTextbox
