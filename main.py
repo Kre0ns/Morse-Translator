@@ -1,7 +1,5 @@
 # importing libs
-import tkinter
 import customtkinter
-import time
 
 # importing funcs
 from funcs import (UserInputProcesser, DecipherText)
@@ -30,7 +28,7 @@ window.resizable(False, False)
 window.columnconfigure(0, weight=1)
 
 # creating and configing the formating explanation/input signifier label
-label1 = customtkinter.CTkLabel(window, font=("Arial", 13.4), text="Type the morse code you wish to translate (Dots . and dashes -)(Formating: Seperate letters with / and words with #):")
+label1 = customtkinter.CTkLabel(window, font=("Arial", 13.4), text="Input (Morse formating: Seperate characters with a space ' ' and words with a space-slash-space ' / ' ):")
 label1.grid(row=0, column=0, padx=10, sticky="NSW")
 
 # creating and configing the input textbox
@@ -42,7 +40,7 @@ translateButton = customtkinter.CTkButton(window, font=("Arial", 13.4), text="Tr
 translateButton.grid(row=2, column=0, padx=10, pady=10, sticky="NSEW")
 
 # creating and configing the output signifier label
-label2 = customtkinter.CTkLabel(window, font=("Arial", 13.4), text="The translation will appear here:")
+label2 = customtkinter.CTkLabel(window, font=("Arial", 13.4), text="Translation:")
 label2.grid(row=3, column=0, padx=10, sticky="NSW")
 
 # creating and configing the outut text box
