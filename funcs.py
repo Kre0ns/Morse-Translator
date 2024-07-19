@@ -1,5 +1,5 @@
-# Dict was written by chatgpt
 MORSE_DICT = {
+    # Dict was written by chatgt
     'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.', 'F': '..-.', 'G': '--.', 'H': '....',
     'I': '..', 'J': '.---', 'K': '-.-', 'L': '.-..', 'M': '--', 'N': '-.', 'O': '---', 'P': '.--.',
     'Q': '--.-', 'R': '.-.', 'S': '...', 'T': '-', 'U': '..-', 'V': '...-', 'W': '.--', 'X': '-..-',
@@ -11,15 +11,37 @@ MORSE_DICT = {
     '+': '.-.-.', '-': '-....-', '_': '..--.-', '"': '.-..-.', '$': '...-..-', '@': '.--.-.'
 }
 
-def UserInputProcesser(userInput, translationProtocol):
+translationProtocol = "morseToEnglish"
+
+
+def ChangeTranslationProtocol(protocolChangeRequest):
+    # changes the protocol on request
+
+    global translationProtocol
+
+    # checks what translation protocol to change to. raises error if invalid.
+    if protocolChangeRequest == "morseToEnglish" and protocolChangeRequest != translationProtocol:
+
+        translationProtocol = protocolChangeRequest
+
+    elif protocolChangeRequest == "englishToMorse" and protocolChangeRequest != translationProtocol:
+
+        translationProtocol = protocolChangeRequest
+
+    else:
+        raise NameError("Invalid Protocol Change Request")
+
+
+def UserInputProcesser(userInput):
     # Gets user input and processes it
 
     processedUserInput = ""
 
     # cleans out the \n that is left at the end of the string by the textbox
     cleanUserInput = userInput.replace("\n","")
+    cleanUserInput = cleanUserInput.rstrip()
 
-    # checks what translation protocol to use and processes the userInput based on that. raises error if invalid
+    # checks what translation protocol to use and processes the userInput based on that
     if translationProtocol == "morseToEnglish":
 
         # replaces spaces with slashes for splitting
@@ -47,13 +69,12 @@ def UserInputProcesser(userInput, translationProtocol):
         raise ValueError("Invalid Translation Protocol")
 
 
-
-def RetriveTranslation(request, translationProtocol):
+def RetriveTranslation(request):
     # retrives the translation of the input and returns it
 
     translation = ""
 
-    # checks what translation protocol to use and translates the request based on that. raises error if invalid
+    # checks what translation protocol to use and translates the request based on that
     if translationProtocol == "morseToEnglish":
 
         try:
@@ -67,7 +88,7 @@ def RetriveTranslation(request, translationProtocol):
 
         try:
             translation = MORSE_DICT.get(request)
-            
+
             return translation
         except:
             return "#"
@@ -77,7 +98,7 @@ def RetriveTranslation(request, translationProtocol):
         raise ValueError("Invalid Translation Protocol")
 
 
-def DecipherText(processedUserInput, translationProtocol):
+def TranslateText(processedUserInput):
     # Converts the morse into a string
 
     decipheredLetter = ""
@@ -96,11 +117,11 @@ def DecipherText(processedUserInput, translationProtocol):
         else:
 
             # requests retrival of a translation for the entry and appends it to the decipheredLetterList
-            decipheredLetter = RetriveTranslation(entry, translationProtocol)
+            decipheredLetter = RetriveTranslation(entry)
 
             decipheredLetterList.append(decipheredLetter)
 
-    # checks what translation protocol to use and raises error if invalid
+    # checks what translation protocol to use and prepares the string based on that
     if translationProtocol == "morseToEnglish":
 
         # Joins the list into a single string 
@@ -121,4 +142,3 @@ def DecipherText(processedUserInput, translationProtocol):
     else:
 
         raise ValueError("Invalid Translation Protocol")
-
