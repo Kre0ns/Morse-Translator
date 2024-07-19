@@ -11,14 +11,14 @@ def ButtonPressed():
     inputText = inputTextBox.get("0.0", "end")
 
     # processes the text
-    processedUserInput = UserInputProcesser(inputText)
+    processedUserInput = UserInputProcesser(inputText, "morseToEnglish")
 
     # deciphers the text
-    decipheredText = DecipherText(processedUserInput)
+    translatedString = DecipherText(processedUserInput, "morseToEnglish")
 
     # outputs the decipherd text to the outputTextbox
     outputTextBox.delete("0.0", "end")
-    outputTextBox.insert("0.0", text=decipheredText)
+    outputTextBox.insert("0.0", text=translatedString)
 
 
 # creating and configing the window
