@@ -39,6 +39,7 @@ inputTextBox.grid(row=1, column=0, padx=10, pady=10, sticky="NSEW")
 translateButton = customtkinter.CTkButton(window, font=("Arial", 13.4), text="Translate", command=TranslateButtonPressed)
 translateButton.grid(row=2, column=0, padx=10, pady=10, sticky="NSW")
 
+# creating and configing the radio buttons that let you choose the translation protocol
 translationProtocolToChangeTo = tkinter.StringVar(value="morseToEnglish")
 morseToEnglishRadioButton = customtkinter.CTkRadioButton(window, text="Morse To English", command=TranslationProtocolButtonPressed, variable=translationProtocolToChangeTo, value= "morseToEnglish")
 morseToEnglishRadioButton.grid(row=2, column=0, padx=10, pady=10, sticky="SN")

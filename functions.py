@@ -139,6 +139,3 @@ def TranslateText(processedUserInput):
         reformatedTranslatedString = translatedString.replace("   ", " / ")
 
         return reformatedTranslatedString
-    else:
-
-        raise ValueError("Invalid Translation Protocol")
